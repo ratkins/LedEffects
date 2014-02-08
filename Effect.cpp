@@ -15,10 +15,10 @@ bool Effect::inYRange(int y) {
 }
 
 struct CRGB& Effect::pixel(int x, int y) {
-    if (x % 2 == 0) {
-        return leds[(x * height) + y];
+    if (y & 1) {
+        return leds[(y * width) + width - x - 1];
     } else {
-        return leds[(x * height) + height - y - 1];
+        return leds[(y * width) + x];
     }
 }
 

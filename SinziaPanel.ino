@@ -7,9 +7,9 @@
 #include "DeadChannel.cpp"
 #include "Bouncy.cpp"
 
-#define NUM_LEDS 576
-#define WIDTH 18
-#define HEIGHT 32
+#define WIDTH 32
+#define HEIGHT 18
+#define NUM_LEDS WIDTH * HEIGHT
 
 #define DATA_PIN 8
 
@@ -42,9 +42,9 @@ void loop() {
 
 //    doDeadChannel();
 //    doPlasma();
-//    doTwinkle();
+    doTwinkle();
 //    doSnake();
-    doBouncy();
+//    doBouncy();
 }
 
 void doDeadChannel() {
