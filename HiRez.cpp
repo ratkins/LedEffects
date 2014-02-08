@@ -25,31 +25,39 @@ public:
     }
         
     void start() {
-//        lo();
+        lo();
         hi();
     }
     
     void lo() {
         for (int x = 0; x < width; x++) {
+            pixel(x - 1, 0) = CHSV(hue, 255, 255);
             pixel(x, 0) = CHSV(hue, 255, 255);
+            pixel(x + 1, 0) = CHSV(hue, 255, 255);
             LEDS.show();
-            delay(256);
+            delay(64);
+            pixel(x - 1, 0) = CRGB::Black;
             pixel(x, 0) = CRGB::Black;
-            LEDS.show();
+            pixel(x + 1, 0) = CRGB::Black;
         }
     }
     //
     // x x x x | x x x x | x x x x | x x x x
     
     void hi() {
-        for (uint16_t x = 1; x < hiWidth; x++) {
+        for (uint16_t x = 1; x < hiWidth; x+= 32) {
             uint16_t actual = x >> 8;
             
             pixel(actual - 1, 0) = CHSV(hue, 255, 255 - x & 0xFF);
-            pixel(actual, 0) = CHSV(hue, 255, x & 0xFF);
+            pixel(actual, 0) = CHSV(hue, 255, 255);
+            pixel(actual + 1, 0) = CHSV(hue, 255, x & 0xFF);
             LEDS.show();
+            pixel(actual - 1, 0) = CHSV(hue, 0, 0);
+            pixel(actual, 0) =  CHSV(hue, 0, 0);
+            pixel(actual + 1, 0) =  CHSV(hue, 0, 0);
         }
     }
+
 };
 
 
