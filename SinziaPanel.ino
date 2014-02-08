@@ -6,6 +6,7 @@
 #include "Twinkle.cpp"
 #include "DeadChannel.cpp"
 #include "Bouncy.cpp"
+#include "HiRez.cpp"
 
 #define WIDTH 32
 #define HEIGHT 18
@@ -42,9 +43,10 @@ void loop() {
 
 //    doDeadChannel();
 //    doPlasma();
-    doTwinkle();
+//    doTwinkle();
 //    doSnake();
 //    doBouncy();
+    doHiRez();
 }
 
 void doDeadChannel() {
@@ -70,4 +72,9 @@ void doSnake() {
 void doBouncy() {
     Bouncy bouncy(leds, WIDTH, HEIGHT);
     bouncy.start();
+}
+
+void doHiRez() {
+    HiRez hiRez(leds, WIDTH, HEIGHT);
+    hiRez.start();
 }
