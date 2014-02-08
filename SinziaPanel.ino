@@ -1,15 +1,10 @@
 #include <FastLED.h>
 
 #include "Plasma.cpp"
-#include "Plasma2.cpp"
 #include "TestPattern.cpp"
-#include "Perlin.cpp"
 #include "Snake.cpp"
-#include "Sprite.cpp"
-#include "SpaceInvader.cpp"
 #include "Twinkle.cpp"
 #include "DeadChannel.cpp"
-#include "Meteors.cpp"
 #include "Bouncy.cpp"
 
 #define NUM_LEDS 576
@@ -46,10 +41,10 @@ void loop() {
 
 
 //    doDeadChannel();
-//    doPlasma();
+    doPlasma();
 //    doTwinkle();
 //    doSnake();
-    doBouncy();
+//    doBouncy();
 }
 
 void doDeadChannel() {
