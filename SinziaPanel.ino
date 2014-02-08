@@ -19,7 +19,7 @@ void setup() {
   // put your setup code here, to run once:
 
     FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
-    Serial.begin(115200);
+    Serial.begin(9600);
 }
 
 void loop() {
@@ -41,10 +41,10 @@ void loop() {
 
 
 //    doDeadChannel();
-    doPlasma();
+//    doPlasma();
 //    doTwinkle();
 //    doSnake();
-//    doBouncy();
+    doBouncy();
 }
 
 void doDeadChannel() {
