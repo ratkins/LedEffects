@@ -7,6 +7,7 @@
 #include "DeadChannel.cpp"
 #include "Bouncy.cpp"
 #include "HiRez.cpp"
+#include "Boxes.cpp"
 
 #define WIDTH 32
 #define HEIGHT 18
@@ -46,7 +47,8 @@ void loop() {
 //    doTwinkle();
 //    doSnake();
 //    doBouncy();
-    doHiRez();
+//    doHiRez();
+    doBoxes();
 }
 
 void doDeadChannel() {
@@ -77,4 +79,9 @@ void doBouncy() {
 void doHiRez() {
     HiRez hiRez(leds, WIDTH, HEIGHT);
     hiRez.start();
+}
+
+void doBoxes() {
+    Boxes boxes(leds, WIDTH, HEIGHT);
+    boxes.start();
 }
