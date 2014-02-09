@@ -13,7 +13,7 @@
 #define HEIGHT 18
 #define NUM_LEDS WIDTH * HEIGHT
 
-#define DATA_PIN 8
+#define DATA_PIN 9
 
 CRGB leds[NUM_LEDS];
 
@@ -21,7 +21,7 @@ void setup() {
   // put your setup code here, to run once:
 
     FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
-    Serial.begin(9600);
+    Serial.begin(115200);
 }
 
 void loop() {
@@ -29,26 +29,13 @@ void loop() {
 //    TestPattern testPattern(leds, WIDTH, HEIGHT);
 //    testPattern.start();
 
-//    Plasma2 plasma(leds, WIDTH, HEIGHT);
-//    plasma.start();
-    
-//    Perlin perlin(leds, WIDTH, HEIGHT);
-//    perlin.start();
-    
-//    Sprite sprite(leds, WIDTH, HEIGHT);
-//    sprite.start();
-    
-//    SpaceInvader spaceInvader(leds, WIDTH, HEIGHT);
-//    spaceInvader.start();
-
-
 //    doDeadChannel();
-//    doPlasma();
+    doPlasma();
 //    doTwinkle();
 //    doSnake();
 //    doBouncy();
 //    doHiRez();
-    doBoxes();
+//    doBoxes();
 }
 
 void doDeadChannel() {
