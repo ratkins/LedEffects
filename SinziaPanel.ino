@@ -75,6 +75,6 @@ void doBoxes() {
 }
 
 void doLife() {
-    Life life(leds, WIDTH, HEIGHT);
+    Life life(leds, WIDTH, HEIGHT, 40);
     life.start();
 }

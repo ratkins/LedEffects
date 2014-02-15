@@ -11,15 +11,16 @@
 class Life : public Effect {
     
 private:
+    uint8_t density;
     
 public:
     
-    Life(CRGB *leds, int width, int height): Effect(leds, width, height) {}
+    Life(CRGB *leds, int width, int height, int density): Effect(leds, width, height), density(density) {}
     
     void seed() {
         for (int i = 0; i < width * height; i++) {
-            if (random(10) > 8) {
-                leds[i] = CRGB::White;
+            if (random(255) < density) {
+                leds[i] = CHSV(0, 255, 255);
             }
         }
     }
@@ -27,21 +28,25 @@ public:
     void start() {
         seed();
         
-        for (int time = 0; time < 1000; time++) {
+        for (int time = 0; time < 128; time++) {
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     int neighbours = numNeighbours(x, y);
-                    if (pixel(x, y) == (CRGB)CRGB::White) {
+                    if (pixel(x, y)) {
                         if (neighbours < 2 || neighbours > 3) {
-                            pixel(x, y) = CRGB::Black;
+                            pixel(x, y) = CHSV(0, 0, 0);
                         }
-                    } else if (neighbours == 3) {
-                        pixel(x, y) = CRGB::White;
+                    } else {
+                        if (neighbours == 3) {
+                            pixel(x, y) = CHSV(0, 255, 255);
+                        }
                     }
                 }
             }
             LEDS.show();
         }
+        
+        fadeout();
     }
     
     /*
@@ -64,9 +69,17 @@ public:
     }
     
     bool alive(int x, int y) {
-        if (inXRange(x) && inYRange(y)) {
-            return pixel(x, y) == (CRGB)CRGB::White;
+        return inXRange(x) && inYRange(y) && pixel(x, y);
+    }
+    
+    void fadeout() {
+        for (int brightness = 0; brightness < 256; brightness++) {
+            for (int i = 0; i < width * height; i++) {
+                leds[i]--;
+            }
+            LEDS.show();
         }
+//        delay(10);
     }
 
 };
