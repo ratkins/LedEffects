@@ -8,6 +8,7 @@
 #include "Bouncy.cpp"
 #include "HiRez.cpp"
 #include "Boxes.cpp"
+#include "Life.cpp"
 
 #define WIDTH 32
 #define HEIGHT 18
@@ -21,7 +22,6 @@ void setup() {
   // put your setup code here, to run once:
 
     FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
-    Serial.begin(115200);
 }
 
 void loop() {
@@ -30,12 +30,13 @@ void loop() {
 //    testPattern.start();
 
 //    doDeadChannel();
-    doPlasma();
+//    doPlasma();
 //    doTwinkle();
 //    doSnake();
 //    doBouncy();
 //    doHiRez();
 //    doBoxes();
+    doLife();
 }
 
 void doDeadChannel() {
@@ -71,4 +72,9 @@ void doHiRez() {
 void doBoxes() {
     Boxes boxes(leds, WIDTH, HEIGHT);
     boxes.start();
+}
+
+void doLife() {
+    Life life(leds, WIDTH, HEIGHT);
+    life.start();
 }

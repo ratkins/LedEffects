@@ -4,8 +4,7 @@
 
 #include "Effect.h"
 
-class Snake : public Effect {
-    
+class Snake : public Effect {    
 private:
     
     static const byte SNAKE_LENGTH = 5;
