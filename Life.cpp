@@ -15,26 +15,25 @@ class Life : public Effect {
 private:
     
     uint8_t density;
+    uint8_t hue;
     uint16_t delta[deltaLen];
     
 public:
     
     Life(CRGB *leds, int width, int height, int density): Effect(leds, width, height), density(density) {}
     
-    void seed() {
+    void seed(uint8_t hue) {
         for (int i = 0; i < width * height; i++) {
             if (random(255) < density) {
-                leds[i] = CRGB::White;
+                leds[i] = CHSV(hue, 255, 255);
             }
         }
     }
     
     void start() {
-        memset8(delta, 0, deltaLen);
-        
-        seed();
-        uint8_t hue = 0;
-        for (int time = 0; time < 128; time++) {
+        uint8_t hue = random(256);
+        seed(hue);
+        for (int time = 0; time < random(96, 156); time++) {
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     int neighbours = numNeighbours(x, y);
@@ -49,13 +48,12 @@ public:
                     }
                 }
             }
-            updateWithChanges();
+            updateWithChanges(hue++);
             for (int i = 0; i < deltaLen; i++) {
                 delta[i] = 0;
             }
             LEDS.show();
         }
-        
         fadeout();
     }
     
@@ -89,14 +87,14 @@ public:
         delta[deltaIndex(x, y)] |= 1 << (x < 16 ? x : x - 16);
     }
     
-    void updateWithChanges() {
+    void updateWithChanges(uint8_t time) {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 if (delta[deltaIndex(x, y)] & (1 << (x < 16 ? x : x - 16))) {
                     if (pixel(x, y)) {
                         pixel(x, y) = CRGB::Black;
                     } else {
-                        pixel(x, y) = CRGB::White;
+                        pixel(x, y) = CHSV(time, 255, 255);
                     }
                 }
             }
