@@ -8,11 +8,14 @@
 
 #import "Effect.h"
 
+const int deltaLen = 36;
+
 class Life : public Effect {
     
 private:
+    
     uint8_t density;
-    uint16_t delta[36];
+    uint16_t delta[deltaLen];
     
 public:
     
@@ -21,12 +24,14 @@ public:
     void seed() {
         for (int i = 0; i < width * height; i++) {
             if (random(255) < density) {
-                leds[i] = CHSV(0, 255, 255);
+                leds[i] = CRGB::White;
             }
         }
     }
     
     void start() {
+        memset8(delta, 0, deltaLen);
+        
         seed();
         uint8_t hue = 0;
         for (int time = 0; time < 128; time++) {
@@ -35,14 +40,18 @@ public:
                     int neighbours = numNeighbours(x, y);
                     if (pixel(x, y)) {
                         if (neighbours < 2 || neighbours > 3) {
-                            pixel(x, y) = CHSV(0, 0, 0);
+                            setChanged(x, y);
                         }
                     } else {
                         if (neighbours == 3) {
-                            pixel(x, y) = CHSV(hue++, 255, 255);
+                            setChanged(x, y);
                         }
                     }
                 }
+            }
+            updateWithChanges();
+            for (int i = 0; i < deltaLen; i++) {
+                delta[i] = 0;
             }
             LEDS.show();
         }
@@ -77,13 +86,25 @@ public:
     // xxxx xxxx xxxx xxxx  xxxx xxxx xxxx xxxx
     
     void setChanged(int x, int y) {
-        int index = y * 2;
-        if (x < 16) {
-            index += 0;
-        } else if (x < 32) {
-            index += 1;
+        delta[deltaIndex(x, y)] |= 1 << (x < 16 ? x : x - 16);
+    }
+    
+    void updateWithChanges() {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                if (delta[deltaIndex(x, y)] & (1 << (x < 16 ? x : x - 16))) {
+                    if (pixel(x, y)) {
+                        pixel(x, y) = CRGB::Black;
+                    } else {
+                        pixel(x, y) = CRGB::White;
+                    }
+                }
+            }
         }
-        delta[index] |= 1 << (x % 2);
+    }
+    
+    int deltaIndex(int x, int y) {
+        return y * 2 + (x < 16 ? 0 : 1);
     }
     
     void fadeout() {
@@ -93,7 +114,6 @@ public:
             }
             LEDS.show();
         }
-//        delay(10);
     }
 
 };
