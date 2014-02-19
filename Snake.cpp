@@ -7,7 +7,7 @@
 class Snake : public Effect {
 private:
     
-    static const byte SNAKE_LENGTH = 18;
+    static const byte SNAKE_LENGTH = 16;
     
     enum Direction {
         UP, DOWN, LEFT, RIGHT
