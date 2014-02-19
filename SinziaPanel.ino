@@ -32,11 +32,11 @@ void loop() {
 //    doDeadChannel();
 //    doPlasma();
 //    doTwinkle();
-//    doSnake();
+    doSnake();
 //    doBouncy();
 //    doHiRez();
 //    doBoxes();
-    doLife();
+//    doLife();
 }
 
 void doDeadChannel() {

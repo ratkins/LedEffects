@@ -14,11 +14,11 @@ private:
     };
     
     struct Pixel {
-        int x;
-        int y;
+        uint8_t x;
+        uint8_t y;
     };
     
-    CRGB *colours;
+    CRGB colours[SNAKE_LENGTH];
     uint8_t initialHue;
     
     Pixel pixels[SNAKE_LENGTH];
