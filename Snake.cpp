@@ -7,7 +7,7 @@
 class Snake : public Effect {
 private:
     
-    static const byte SNAKE_LENGTH = 5;
+    static const byte SNAKE_LENGTH = 18;
     
     enum Direction {
         UP, DOWN, LEFT, RIGHT
@@ -79,7 +79,7 @@ public:
             }
             fill_rainbow(colours, SNAKE_LENGTH, initialHue++);
             for (byte i = 0; i < SNAKE_LENGTH; i++) {
-                pixel(pixels[i].x, pixels[i].y) = colours[i];
+                pixel(pixels[i].x, pixels[i].y) = colours[i] %= (255 - i * (255 / SNAKE_LENGTH));
             }
             LEDS.show();
             delay(30);
