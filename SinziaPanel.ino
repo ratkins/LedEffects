@@ -9,6 +9,7 @@
 #include "HiRez.cpp"
 #include "Boxes.cpp"
 #include "Life.cpp"
+#include "Sprite.cpp"
 
 #define WIDTH 32
 #define HEIGHT 18
@@ -32,11 +33,12 @@ void loop() {
 //    doDeadChannel();
 //    doPlasma();
 //    doTwinkle();
-    doSnake();
+//    doSnake();
 //    doBouncy();
 //    doHiRez();
 //    doBoxes();
 //    doLife();
+    doSprite();
 }
 
 void doDeadChannel() {
@@ -77,4 +79,9 @@ void doBoxes() {
 void doLife() {
     Life life(leds, WIDTH, HEIGHT, 56);
     life.start();
+}
+
+void doSprite() {
+    Sprite sprite(leds, WIDTH, HEIGHT);
+    sprite.start();
 }
