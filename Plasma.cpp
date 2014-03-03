@@ -16,9 +16,7 @@ public:
     }
     
     void start() {
-        bool direction = true;
-        int increment = 16;
-        for (uint16_t time = 0;; time += 128 /*(sin8(time)*/) {
+        for (uint16_t time = 0, cycles = 0; cycles < 2048; time += 128, cycles++) {
             calcFrame(time);
         }
     }

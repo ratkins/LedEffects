@@ -31,30 +31,32 @@ public:
     }
     
     void start() {
-        uint8_t hue = random(256);
-        seed(hue);
-        for (int time = 0; time < random(96, 156); time++) {
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    int neighbours = numNeighbours(x, y);
-                    if (pixel(x, y)) {
-                        if (neighbours < 2 || neighbours > 3) {
-                            setChanged(x, y);
-                        }
-                    } else {
-                        if (neighbours == 3) {
-                            setChanged(x, y);
+        for (int iterations = 0; iterations < 20; iterations++) {
+            uint8_t hue = random(256);
+            seed(hue);
+            for (int time = 0; time < random(96, 156); time++) {
+                for (int x = 0; x < width; x++) {
+                    for (int y = 0; y < height; y++) {
+                        int neighbours = numNeighbours(x, y);
+                        if (pixel(x, y)) {
+                            if (neighbours < 2 || neighbours > 3) {
+                                setChanged(x, y);
+                            }
+                        } else {
+                            if (neighbours == 3) {
+                                setChanged(x, y);
+                            }
                         }
                     }
                 }
+                updateWithChanges(hue++);
+                for (int i = 0; i < deltaLen; i++) {
+                    delta[i] = 0;
+                }
+                LEDS.show();
             }
-            updateWithChanges(hue++);
-            for (int i = 0; i < deltaLen; i++) {
-                delta[i] = 0;
-            }
-            LEDS.show();
+            fadeout();
         }
-        fadeout();
     }
     
     /*

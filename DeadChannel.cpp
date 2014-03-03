@@ -15,7 +15,7 @@ public:
     }
     
     void start() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 5; i++) {
             playStatic();
             blank();
         }
@@ -26,10 +26,8 @@ public:
         for (int staticFrame = 0; staticFrame < staticLength; staticFrame++) {
             for (int i = 0; i < width * height; i++) {
                 leds[i] = CHSV(0, 0, random());
-//                leds[i] = CHSV(0, 0, 255);
             }
             LEDS.show();
-//            delay(32);
         }
     }
     

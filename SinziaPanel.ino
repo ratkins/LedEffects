@@ -31,13 +31,14 @@ void loop() {
 //    testPattern.start();
 
 //    doDeadChannel();
-//    doPlasma();
 //    doTwinkle();
+//    doDeadChannel();
+//    doPlasma();
+//    doDeadChannel();
 //    doSnake();
-//    doBouncy();
-//    doHiRez();
-//    doBoxes();
+//    doDeadChannel();
 //    doLife();
+    doDeadChannel();
     doSprite();
 }
 
@@ -59,21 +60,6 @@ void doTwinkle() {
 void doSnake() {
     Snake snake(leds, WIDTH, HEIGHT);
     snake.start();
-}
-
-void doBouncy() {
-    Bouncy bouncy(leds, WIDTH, HEIGHT);
-    bouncy.start();
-}
-
-void doHiRez() {
-    HiRez hiRez(leds, WIDTH, HEIGHT);
-    hiRez.start();
-}
-
-void doBoxes() {
-    Boxes boxes(leds, WIDTH, HEIGHT);
-    boxes.start();
 }
 
 void doLife() {
