@@ -45,7 +45,7 @@ public:
     }
     
     void start() {
-        for (int i = 0; i < 750; i++) {
+        for (int i = 0; i < 400; i++) {
             if (random(100) > 98) {
                 blit(ghostData, 178, random(0, width - spriteWidth), random(0, height - spriteHeight));
             } else {

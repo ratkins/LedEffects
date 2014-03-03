@@ -30,14 +30,14 @@ void loop() {
 //    TestPattern testPattern(leds, WIDTH, HEIGHT);
 //    testPattern.start();
 
-//    doDeadChannel();
-//    doTwinkle();
-//    doDeadChannel();
-//    doPlasma();
-//    doDeadChannel();
-//    doSnake();
-//    doDeadChannel();
-//    doLife();
+    doDeadChannel();
+    doTwinkle();
+    doDeadChannel();
+    doPlasma();
+    doDeadChannel();
+    doSnake();
+    doDeadChannel();
+    doLife();
     doDeadChannel();
     doSprite();
 }
