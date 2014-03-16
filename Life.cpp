@@ -1,10 +1,6 @@
-//
-//  Life.cpp
-//  GauntletII
-//
-//  Created by Robert Atkins on 26/09/13.
-//  Copyright (c) 2013 Robert Atkins. All rights reserved.
-//
+/*
+ * Effect implementation for LEDEffects.
+ */
 
 #import "Effect.h"
 

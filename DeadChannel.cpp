@@ -1,5 +1,5 @@
 /*
- * Effect implementation for the GauntletII project.
+ * Effect implementation for LEDEffects.
  */
 
 #include "Effect.h"

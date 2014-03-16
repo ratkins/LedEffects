@@ -1,10 +1,6 @@
-//
-//  Plasma.cpp
-//  GauntletII
-//
-//  Created by Robert Atkins on 26/09/13.
-//  Copyright (c) 2013 Robert Atkins. All rights reserved.
-//
+/*
+ * Effect implementation for LEDEffects.
+ */
 
 #import "Effect.h"
 
@@ -20,8 +16,6 @@ public:
             calcFrame(time);
         }
     }
-    //sin(distance(x, y, (128 * sin(-t) + 128), (128 * cos(-t) + 128)) / 40.74)s
-    // v = sin(10 * (x * sin(time / 2) + y * cos(time / 3)) + time)
     
     void calcFrame(int time) {
         for (int x = 0; x < width; x++) {

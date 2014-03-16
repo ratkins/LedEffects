@@ -5,9 +5,6 @@
 #include "Snake.cpp"
 #include "Twinkle.cpp"
 #include "DeadChannel.cpp"
-#include "Bouncy.cpp"
-#include "HiRez.cpp"
-#include "Boxes.cpp"
 #include "Life.cpp"
 #include "Sprite.cpp"
 
@@ -27,6 +24,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
 //    TestPattern testPattern(leds, WIDTH, HEIGHT);
 //    testPattern.start();
 
