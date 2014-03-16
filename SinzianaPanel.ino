@@ -25,6 +25,8 @@ void setup() {
     FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
 }
 
+// Muhahahaa! It's all mine!
+
 void loop() {
   // put your main code here, to run repeatedly:
 //    TestPattern testPattern(leds, WIDTH, HEIGHT);
